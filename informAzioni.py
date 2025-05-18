@@ -4,7 +4,8 @@ import yfinance as yf
 import finplot as fplt
 import os, sys
 from datetime import datetime
-
+if 'TERM' not in os.environ:
+    os.environ['TERM'] = 'xterm-256color'
 
 # Funzione per mostrare il logo in ASCII art
 def mostra_logo():
@@ -23,9 +24,10 @@ def mostra_logo():
                     / /\ \    / /   | || |  | | . ` | | |  
                    / ____ \  / /__ _| || |__| | |\  |_| |_ 
                   /_/    \_\/_____|_____\____/|_| \_|_____|
-                                                                        
+
     """
     print(logo)
+
 
 # Funzione per pulire lo schermo
 def pulisci_schermo():
@@ -34,6 +36,7 @@ def pulisci_schermo():
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
 # Funzione per riavviare lo script
 def restart_program():
     """
@@ -41,6 +44,7 @@ def restart_program():
     """
     python = sys.executable
     os.execl(python, python, *sys.argv)
+
 
 # Funzione per visualizzare il grafico a candela
 def plot_candlestick(df):
@@ -55,6 +59,7 @@ def plot_candlestick(df):
         return
     fplt.candlestick_ochl(df[['Open', 'Close', 'High', 'Low']])
     fplt.show()
+
 
 # Funzione per visualizzare il menu
 def visualizza_menu(titolo_azionario, nome_azienda):
@@ -205,6 +210,7 @@ def visualizza_menu(titolo_azionario, nome_azienda):
         else:
             print("Scelta non valida")
 
+
 # Funzione principale
 def main():
     """
@@ -241,6 +247,7 @@ def main():
     except KeyboardInterrupt:
         print("\n\nProgramma interrotto dall'utente.")
         print("Chiusura in corso...")
+
 
 if __name__ == '__main__':
     main()
