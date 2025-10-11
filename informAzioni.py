@@ -1,9 +1,10 @@
-from types import NoneType
-
-import yfinance as yf
-import finplot as fplt
-import os, sys
+import os
+import sys
 from datetime import datetime
+
+import finplot as fplt
+import yfinance as yf
+
 if 'TERM' not in os.environ:
     os.environ['TERM'] = 'xterm-256color'
 
